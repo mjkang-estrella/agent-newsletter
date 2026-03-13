@@ -1,0 +1,88 @@
+{
+  "currentVersion": "1.0.1",
+  "scopeDefinition": {
+    "version": "1.0.1",
+    "effectiveAt": "2026-03-12T00:00:00.000Z",
+    "reviewedAt": "2026-03-12T00:00:00.000Z",
+    "nextReviewAt": "2026-06-12T00:00:00.000Z",
+    "reviewCadence": "quarterly",
+    "audience": {
+      "primarySubscribers": "Autonomous AI agent programs that subscribe to the JSON API and act on the resulting items.",
+      "secondaryOperators": "Human operators who deploy, supervise, and review the autonomous agents consuming the newsletter."
+    },
+    "definition": "AI agents are software systems that autonomously pursue goals by planning what to do next, using tools or external systems, and executing work across multiple steps with limited human intervention.",
+    "inclusionPolicy": {
+      "qualificationRule": "Treat a candidate as AI-agent-relevant only when the underlying system can accept a goal, decide or revise what to do next at runtime, use external tools or systems, and carry out multiple steps with limited human intervention.",
+      "requiredCapabilities": [
+        "Maintains an explicit delegated goal beyond answering a single prompt.",
+        "Chooses or adapts the next action at runtime based on state, observations, or prior tool results.",
+        "Uses tools or external systems such as APIs, browsers, shells, files, databases, or code execution environments.",
+        "Executes work across multiple steps without requiring a human prompt before every action."
+      ],
+      "inclusionExamples": [
+        "A coding agent that inspects a repository, plans code changes, runs tests, and iterates until checks pass.",
+        "A browser agent that researches vendors, fills forms, and retries failed steps while pursuing a delegated task.",
+        "A multi-agent orchestration runtime that delegates work to specialized workers, verifies outputs, and merges the result.",
+        "An agent memory or evaluation system that materially improves autonomous planning, tool selection, or long-horizon execution."
+      ],
+      "exclusionExamples": [
+        "A chatbot interface that only returns text answers and never takes autonomous actions in external systems.",
+        "A single-shot LLM wrapper that sends one prompt to a model and returns the response without planning or tool use.",
+        "A fixed automation script or deterministic workflow whose steps are fully predeclared and never chosen dynamically at runtime.",
+        "A generic AI productivity feature where any agent integration is hypothetical or secondary to a human-driven workflow."
+      ]
+    },
+    "coverageBoundaries": {
+      "inScope": [
+        "Autonomous, goal-directed systems that plan or adapt their next action before executing work.",
+        "Tool-using systems that interact with APIs, browsers, shells, files, databases, or code execution environments as part of runtime decision-making.",
+        "Infrastructure that materially improves autonomous behavior, including planning, memory, tool use, evaluation, orchestration, verification, or multi-agent coordination.",
+        "Tools, APIs, libraries, and techniques that subscribing agents could directly integrate to expand or harden their capabilities."
+      ],
+      "outOfScope": [
+        "Plain chatbots or assistants that only return text and do not take autonomous actions.",
+        "Single-shot LLM wrappers that call a model once without planning, tool use, or multi-step execution.",
+        "Static automation scripts, deterministic DAGs, or fixed workflows that do not choose actions dynamically at runtime.",
+        "Generic AI news, model launches, or prompt-writing advice without a direct autonomous-agent implication.",
+        "Human-only productivity tools unless the agent integration surface is the primary, operationally real capability."
+      ],
+      "decisionRule": "Include a candidate only when a deployed system could use it to autonomously decide and execute the next step toward a goal."
+    },
+    "changeTracking": {
+      "versioningScheme": "semver",
+      "updatePolicy": "Any scope-boundary change requires a version bump and a new changelog entry. Quarterly reviews that do not change coverage only refresh reviewedAt and nextReviewAt for the current version.",
+      "versionChangeRules": {
+        "major": "Use a major version bump when the inclusion boundary changes in a way that would add or remove a broad class of content.",
+        "minor": "Use a minor version bump when the scope gains or narrows a specific covered pattern, source family, or edge-case rule without redefining the core agent standard.",
+        "patch": "Use a patch version bump for clarifications, examples, or wording changes that do not alter editorial behavior."
+      }
+    }
+  },
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "changeType": "initial",
+      "effectiveAt": "2026-03-12T00:00:00.000Z",
+      "summary": "Established the initial machine-readable editorial scope for the newsletter.",
+      "rationale": "The newsletter needs an explicit, versioned boundary so consuming agents and operators can reason about what coverage means and how it changes over time.",
+      "scopeChanges": [
+        "Included autonomous software that plans, uses tools, and executes toward goals with limited human intervention.",
+        "Included direct capability enablers such as agent runtimes, tool protocols, sandboxes, evaluators, and orchestration systems.",
+        "Excluded plain chatbots, single-shot LLM wrappers, static automation scripts, and generic AI coverage without direct agent relevance.",
+        "Defined quarterly review and semver-based change tracking for future boundary updates."
+      ]
+    },
+    {
+      "version": "1.0.1",
+      "changeType": "patch",
+      "effectiveAt": "2026-03-12T00:00:00.000Z",
+      "summary": "Added an explicit AI-agent inclusion policy with qualifying criteria and boundary examples.",
+      "rationale": "Editorial decisions need machine-readable examples so operators and consuming agents can distinguish autonomous systems from adjacent chatbot or automation tooling.",
+      "scopeChanges": [
+        "Added a qualification rule that defines what capabilities a system must have to count as an AI agent for newsletter inclusion.",
+        "Documented concrete inclusion examples such as coding agents, browser agents, multi-agent runtimes, and autonomy-focused memory or evaluation systems.",
+        "Documented concrete exclusion examples such as chat UIs, single-shot wrappers, static automation scripts, and generic human-only AI productivity features."
+      ]
+    }
+  ]
+}

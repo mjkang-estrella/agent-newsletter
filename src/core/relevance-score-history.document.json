@@ -1,0 +1,109 @@
+{
+  "currentVersion": "1.0.0",
+  "versioningScheme": "semver",
+  "history": [
+    {
+      "version": "1.0.0",
+      "changeType": "initial",
+      "effectiveAt": "2026-03-12T00:00:00.000Z",
+      "summary": "Established the initial weighted composite relevance score used to publish newsletter items.",
+      "rationale": "The first scoring formula needed a transparent baseline that balances freshness, source authority, independent corroboration, repository traction, and social attention while keeping one stable 0-100 publication gate for autonomous consumers.",
+      "formulaDefinition": {
+        "formula": "weighted_average(recency, sourceAuthority, mentionFrequency, github, socialEngagement) -> clamp(0..100)",
+        "weightingPolicy": "Configured weights are re-normalized across observed signals only, so items are scored on the evidence available instead of being penalized for missing signal families.",
+        "minimumPublishedScore": 60,
+        "fields": [
+          {
+            "name": "recency",
+            "weight": 0.24,
+            "description": "Freshness signal based on how recently the underlying entity was published or first discovered.",
+            "rules": [
+              "Apply exponential decay from publish time.",
+              "Use a 24-hour half-life.",
+              "Treat 168 hours as the maximum age window for freshness."
+            ]
+          },
+          {
+            "name": "sourceAuthority",
+            "weight": 0.28,
+            "description": "Authority signal derived from domain expertise, historical reliability, and source quality.",
+            "rules": [
+              "Use the normalized source-authority score from the source authority model.",
+              "Favor specialized, historically accurate sources over low-context reposts."
+            ]
+          },
+          {
+            "name": "mentionFrequency",
+            "weight": 0.18,
+            "description": "Cross-source corroboration signal based on how often the same entity appears across independent mentions.",
+            "rules": [
+              "Use the deduplicated cross-source mention count.",
+              "Log-normalize the signal with saturation at 8 mentions."
+            ]
+          },
+          {
+            "name": "github",
+            "weight": 0.2,
+            "description": "Repository traction signal blended from GitHub stars and recent project activity.",
+            "rules": [
+              "Blend stars at weight 0.6 with activity at weight 0.4.",
+              "Saturate total stars at 50000.",
+              "Saturate stars gained in the current window at 250."
+            ]
+          },
+          {
+            "name": "socialEngagement",
+            "weight": 0.1,
+            "description": "Aggregate social attention signal collected from posts, reposts, comments, and similar engagement signals.",
+            "rules": [
+              "Use the merged social-engagement total after deduplication.",
+              "Log-normalize the signal with saturation at 1000."
+            ]
+          }
+        ],
+        "rules": [
+          {
+            "name": "available-signal-renormalization",
+            "description": "Configured field weights are re-normalized across observed signals only, so missing signal families do not directly penalize an item."
+          },
+          {
+            "name": "publication-threshold",
+            "description": "Only items scoring 60 or higher are eligible for publication in an edition."
+          },
+          {
+            "name": "score-interpretation",
+            "description": "Scores are assessment-oriented relevance estimates for autonomous AI agents, not predictions of future adoption."
+          },
+          {
+            "name": "score-range",
+            "description": "The final composite score is clamped to the inclusive 0-100 range."
+          }
+        ],
+        "config": {
+          "scoreInterpretation": "assessment",
+          "scoreRange": {
+            "min": 0,
+            "max": 100
+          },
+          "recencyHalfLifeHours": 24,
+          "recencyMaxAgeHours": 168,
+          "mentionCountSaturation": 8,
+          "githubStarsSaturation": 50000,
+          "githubStarsTodaySaturation": 250,
+          "socialEngagementSaturation": 1000,
+          "githubSignalWeights": {
+            "stars": 0.6,
+            "activity": 0.4
+          },
+          "weights": {
+            "recency": 0.24,
+            "sourceAuthority": 0.28,
+            "mentionFrequency": 0.18,
+            "github": 0.2,
+            "socialEngagement": 0.1
+          }
+        }
+      }
+    }
+  ]
+}

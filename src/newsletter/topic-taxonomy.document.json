@@ -1,0 +1,206 @@
+{
+  "currentVersion": "1.0.0",
+  "taxonomyDefinition": {
+    "version": "1.0.0",
+    "effectiveAt": "2026-03-12T00:00:00.000Z",
+    "reviewedAt": "2026-03-12T00:00:00.000Z",
+    "nextReviewAt": "2026-06-12T00:00:00.000Z",
+    "reviewCadence": "quarterly",
+    "definition": "The AI-agent topic taxonomy defines the canonical coverage areas the newsletter tracks so editorial, discovery, and coverage-evaluation workflows can reason about whether an edition spans the major ways autonomous agents are built, operated, and verified.",
+    "coverageAreas": [
+      {
+        "key": "agent-runtimes",
+        "label": "Agent Runtimes",
+        "description": "Frameworks, SDKs, control planes, and execution environments that provide the core runtime for autonomous agents.",
+        "contentCategories": ["tool", "api", "library"],
+        "signals": [
+          "Agent SDK or framework launches.",
+          "Runtime APIs for long-running or resumable execution.",
+          "Control-plane capabilities for planning, state transitions, or worker coordination."
+        ]
+      },
+      {
+        "key": "tool-use-and-integrations",
+        "label": "Tool Use and Integrations",
+        "description": "Protocols, adapters, and practical integration patterns that let agents call external tools and systems safely and effectively.",
+        "contentCategories": ["tool", "api", "library", "technique"],
+        "signals": [
+          "MCP servers, tool-calling APIs, or connector SDKs.",
+          "Browser, shell, database, or code-execution integrations.",
+          "Techniques for tool selection, tool grounding, or integration ergonomics."
+        ]
+      },
+      {
+        "key": "planning-and-reasoning",
+        "label": "Planning and Reasoning",
+        "description": "Techniques and systems for decomposition, reflection, policy selection, and other runtime decision-making used by autonomous agents.",
+        "contentCategories": ["technique", "library"],
+        "signals": [
+          "Task decomposition or planner architectures.",
+          "Reflection, self-critique, or policy-improvement loops.",
+          "Decision policies that choose or revise the next step at runtime."
+        ]
+      },
+      {
+        "key": "memory-and-context",
+        "label": "Memory and Context",
+        "description": "Persistent memory, retrieval, and context-management systems that improve long-horizon execution and agent continuity.",
+        "contentCategories": ["tool", "library", "technique"],
+        "signals": [
+          "Retrieval or memory backends for agents.",
+          "State persistence, context windows, or episodic memory systems.",
+          "Knowledge refresh or grounding techniques that improve execution quality."
+        ]
+      },
+      {
+        "key": "multi-agent-coordination",
+        "label": "Multi-Agent Coordination",
+        "description": "Delegation models, agent-to-agent protocols, and orchestration systems used when multiple autonomous workers collaborate.",
+        "contentCategories": ["tool", "api", "library", "technique"],
+        "signals": [
+          "Supervisor-worker or planner-executor topologies.",
+          "Agent communication protocols or handoff standards.",
+          "Coordination runtimes for specialized worker agents."
+        ]
+      },
+      {
+        "key": "evaluation-and-observability",
+        "label": "Evaluation and Observability",
+        "description": "Benchmarks, tracing, telemetry, and reliability tooling used to measure and debug autonomous agent behavior.",
+        "contentCategories": ["tool", "library", "technique"],
+        "signals": [
+          "Agent benchmarks, eval harnesses, or judge pipelines.",
+          "Tracing, monitoring, or replay tooling for agent runs.",
+          "Reliability metrics for tool use, task completion, or regression detection."
+        ]
+      },
+      {
+        "key": "security-and-governance",
+        "label": "Security and Governance",
+        "description": "Sandboxing, identity, permissions, policy controls, and hardening techniques that constrain or secure agent behavior.",
+        "contentCategories": ["tool", "api", "library", "technique"],
+        "signals": [
+          "Sandboxing, capability scoping, or least-privilege controls.",
+          "Identity, authentication, policy, or approval systems for agents.",
+          "Mitigations for prompt injection, supply-chain, or tool-execution risk."
+        ]
+      },
+      {
+        "key": "deployment-and-adoption",
+        "label": "Deployment and Adoption",
+        "description": "Operational reports, production guidance, incidents, and ecosystem state changes that show how autonomous agents behave in real deployments.",
+        "contentCategories": ["tool", "api", "technique"],
+        "signals": [
+          "Production incident reports, rollout learnings, or cost-performance tradeoffs.",
+          "Adoption trends such as star velocity, usage growth, or repeated operator endorsements.",
+          "Hosting, lifecycle, or platform changes that affect agent operations in production."
+        ]
+      }
+    ],
+    "sourceCoverageMapping": [
+      {
+        "sourceKind": "x",
+        "sourceIds": ["x"],
+        "primaryCoverageAreas": [
+          "agent-runtimes",
+          "tool-use-and-integrations",
+          "deployment-and-adoption"
+        ],
+        "secondaryCoverageAreas": [
+          "multi-agent-coordination",
+          "security-and-governance",
+          "evaluation-and-observability"
+        ],
+        "rationale": "X surfaces launches, integration tips, and ecosystem reaction quickly, so it is strongest for early release signals and fast-moving adoption narratives."
+      },
+      {
+        "sourceKind": "github",
+        "sourceIds": ["github"],
+        "primaryCoverageAreas": [
+          "agent-runtimes",
+          "tool-use-and-integrations",
+          "evaluation-and-observability",
+          "security-and-governance"
+        ],
+        "secondaryCoverageAreas": [
+          "planning-and-reasoning",
+          "memory-and-context",
+          "multi-agent-coordination",
+          "deployment-and-adoption"
+        ],
+        "rationale": "Repositories, releases, and code-level metadata are strongest for shippable runtime, integration, security, and observability capabilities."
+      },
+      {
+        "sourceKind": "arxiv",
+        "sourceIds": ["arxiv"],
+        "primaryCoverageAreas": [
+          "planning-and-reasoning",
+          "memory-and-context",
+          "multi-agent-coordination",
+          "evaluation-and-observability"
+        ],
+        "secondaryCoverageAreas": [
+          "agent-runtimes",
+          "tool-use-and-integrations",
+          "security-and-governance"
+        ],
+        "rationale": "arXiv is strongest for net-new techniques, benchmarks, and research-led changes to planning, memory, and multi-agent behavior."
+      },
+      {
+        "sourceKind": "reddit",
+        "sourceIds": ["reddit"],
+        "primaryCoverageAreas": [
+          "deployment-and-adoption",
+          "tool-use-and-integrations",
+          "agent-runtimes"
+        ],
+        "secondaryCoverageAreas": [
+          "evaluation-and-observability",
+          "security-and-governance",
+          "memory-and-context"
+        ],
+        "rationale": "Reddit is strongest for operator reports, integration friction, comparative discussion, and emerging adoption signals from practitioners."
+      },
+      {
+        "sourceKind": "web",
+        "sourceIds": ["web-discovery"],
+        "primaryCoverageAreas": [
+          "agent-runtimes",
+          "tool-use-and-integrations",
+          "security-and-governance",
+          "deployment-and-adoption"
+        ],
+        "secondaryCoverageAreas": [
+          "planning-and-reasoning",
+          "memory-and-context",
+          "multi-agent-coordination",
+          "evaluation-and-observability"
+        ],
+        "rationale": "Broader web discovery captures vendor docs, security advisories, launch posts, and operational guides that round out coverage outside the seed platforms."
+      }
+    ],
+    "changeTracking": {
+      "versioningScheme": "semver",
+      "updatePolicy": "Any taxonomy-area or source-mapping change requires a version bump and a new changelog entry. Quarterly reviews that do not change taxonomy behavior only refresh reviewedAt and nextReviewAt for the current version.",
+      "versionChangeRules": {
+        "major": "Use a major version bump when the canonical area model changes in a way that would materially alter coverage accounting across most editions.",
+        "minor": "Use a minor version bump when adding, removing, or materially remapping a specific coverage area or source-family association.",
+        "patch": "Use a patch version bump for clarifications, examples, or rationale updates that do not change coverage evaluation behavior."
+      }
+    }
+  },
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "changeType": "initial",
+      "effectiveAt": "2026-03-12T00:00:00.000Z",
+      "summary": "Established the canonical AI-agent topic taxonomy and seeded source-to-topic coverage mappings.",
+      "rationale": "Coverage checks need a stable, machine-readable taxonomy so the system can tell whether editions span the major capability areas autonomous agents depend on.",
+      "taxonomyChanges": [
+        "Defined eight canonical coverage areas spanning runtimes, tool use, planning, memory, coordination, evaluation, security, and deployment.",
+        "Mapped the current source families and adapter ids to primary and secondary coverage areas for later coverage evaluation.",
+        "Adopted quarterly review and semver-based change tracking for taxonomy evolution."
+      ]
+    }
+  ]
+}

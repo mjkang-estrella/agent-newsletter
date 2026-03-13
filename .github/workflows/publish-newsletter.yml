@@ -1,0 +1,33 @@
+name: Publish Newsletter Edition
+
+on:
+  schedule:
+    - cron: "0 21 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: publish-newsletter-edition
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    env:
+      NEWSLETTER_BASE_TIMEZONE: UTC
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Publish newsletter edition
+        run: npm run publish:newsletter

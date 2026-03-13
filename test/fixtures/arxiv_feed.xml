@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:arxiv="http://arxiv.org/schemas/atom">
+  <title>arXiv Query Results</title>
+  <entry>
+    <id>http://arxiv.org/abs/2603.12345</id>
+    <updated>2026-03-10T13:45:00Z</updated>
+    <published>2026-03-10T12:30:00Z</published>
+    <title>Coordinating LLM Agents with Retrieval-Augmented Planning</title>
+    <summary>
+      We introduce an agentic planning framework for tool-using language model agents.
+      The method combines retrieval, long-term memory, and evaluation loops.
+    </summary>
+    <author>
+      <name>Ada Lovelace</name>
+      <arxiv:affiliation>Analytical Engines Lab</arxiv:affiliation>
+    </author>
+    <author>
+      <name>Grace Hopper</name>
+      <arxiv:affiliation>Compiler Research Group</arxiv:affiliation>
+    </author>
+    <link href="http://arxiv.org/abs/2603.12345v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2603.12345v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category term="cs.AI"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <arxiv:comment>Accepted at Agent Systems Workshop 2026.</arxiv:comment>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2603.12346</id>
+    <updated>2026-03-10T18:00:00Z</updated>
+    <published>2026-03-10T17:10:00Z</published>
+    <title>A Benchmark for Multi-Agent API Planning</title>
+    <summary>
+      We present an evaluation benchmark for autonomous agents that call external APIs.
+      The benchmark supports reproducible tool invocation and planning analysis.
+    </summary>
+    <author>
+      <name>Katherine Johnson</name>
+      <arxiv:affiliation>Orbital Computing Institute</arxiv:affiliation>
+    </author>
+    <link href="http://arxiv.org/abs/2603.12346v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/2603.12346v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category term="cs.MA"/>
+    <category term="cs.MA" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <arxiv:doi>10.1000/arxiv.2603.12346</arxiv:doi>
+  </entry>
+</feed>

@@ -1,0 +1,19 @@
+{
+  "name": "agent-newsletter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Newsletter ingestion pipeline for AI agent sources",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.4"
+  },
+  "scripts": {
+    "build": "node --input-type=module -e \"import './src/index.js'\"",
+    "lint": "node --check src/**/*.js",
+    "discover:sources": "node src/discovery/run-source-discovery-worker.js",
+    "publish:newsletter": "node src/newsletter/publish-newsletter-edition.js",
+    "publish:newsletter:scheduled": "node src/newsletter/run-scheduled-publication.js",
+    "start:publication-scheduler": "node src/newsletter/start-publication-scheduler.js",
+    "test": "node --test"
+  }
+}

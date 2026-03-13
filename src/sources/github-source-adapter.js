@@ -1,0 +1,16 @@
+export {
+  DEFAULT_GITHUB_API_BASE_URL,
+  DEFAULT_GITHUB_RATE_LIMIT_MAX_RETRIES,
+  DEFAULT_GITHUB_RATE_LIMIT_RETRY_AFTER_MS,
+  DEFAULT_GITHUB_SEARCH_LIMIT,
+  DEFAULT_GITHUB_SEARCH_TERMS,
+  DEFAULT_GITHUB_TRENDING_SINCE,
+  DEFAULT_GITHUB_USER_AGENT,
+  DEFAULT_GITHUB_WEB_BASE_URL,
+  GitHubSourceAdapter,
+  buildSearchQuery,
+  categorizeRepository,
+  deriveIntegrationHint,
+  isAiAgentRepository,
+  parseTrendingHtml,
+} from "./github-source.js";
