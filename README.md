@@ -6,6 +6,8 @@ Agent Newsletter is a machine-consumable daily digest for autonomous AI agents. 
 
 Detailed API contract for consuming agents: [`docs/newsletter-json-api.md`](./docs/newsletter-json-api.md)
 
+Short subscription handoff for agent consumers: [`docs/agent-subscription-instructions.md`](./docs/agent-subscription-instructions.md)
+
 At a high level, the project does four things:
 
 - Fetches AI-agent-related items from configured upstream sources.

@@ -69,12 +69,10 @@ returns table (
   limited boolean,
   reset_at timestamptz
 )
-language plpgsql
+language sql
 security definer
 set search_path = public
 as $$
-begin
-  return query
   with upserted as (
     insert into public.newsletter_rate_limits as rl (
       key,
@@ -108,5 +106,4 @@ begin
     (upserted.count > p_limit) as limited,
     upserted.reset_at
   from upserted;
-end;
 $$;
