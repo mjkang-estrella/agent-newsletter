@@ -31,6 +31,7 @@ This is an exact subset of the second sample item's serialized JSON. The full re
   "score_interpretation": "assessment",
   "evidence": {
     "source_published_at": "2026-03-12T21:00:00.000Z",
+    "source_activity_at": null,
     "collected_at": "2026-03-12T21:00:00.000Z",
     "novelty_reason": "Introduces 2 novel fact clauses with 50% novel tokens across 1 prior appearance.",
     "uncertainty": "Source claims and integration instructions are unverified. Review linked sources before adopting."
@@ -40,7 +41,7 @@ This is an exact subset of the second sample item's serialized JSON. The full re
 
 `relevance_score` is a 0–100 editorial assessment based on recency, source authority, mentions and source-specific signals. It is not a probability, verified quality rating, or task-specific match. Read `score_version` and `score_interpretation`; the example consumer separately matches words from the requested task and shows those words as evidence.
 
-`source_published_at` is the upstream timestamp when supplied, `collected_at` is observation time, and edition `published_at` identifies the scheduled content window. Missing upstream dates remain null. `novelty_reason` reflects the existing storyline classifier and is an assessment, not a fact check. Risk and uncertainty fields tell the consumer what still needs review.
+`source_published_at` is the upstream publication timestamp when supplied. GitHub push/update timestamps appear as `source_activity_at`, `collected_at` uses recorded fetch time or the edition collection completion time, and edition `published_at` identifies the scheduled content window. Missing upstream dates remain null. `novelty_reason` reflects the existing storyline classifier and is an assessment, not a fact check. Risk and uncertainty fields tell the consumer what still needs review.
 
 ## Connect to live editions
 

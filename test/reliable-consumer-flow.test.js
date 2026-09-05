@@ -71,3 +71,15 @@ test('a stalled source becomes missing coverage while a healthy source completes
   assert.equal(result.fetchVerification.status, 'partial');
   assert.equal(result.fetchReports[1].status, 'failed');
 });
+
+
+test('collection time does not reuse a scheduled discovery timestamp or call GitHub activity publication', async () => {
+  const { serializeNewsletterItem } = await import('../src/newsletter/edition.js');
+  const item = { sourceKinds: ['github'], adapterIds: ['github'], name: 'Tool', category: 'tool', sourceUrl: 'https://github.com/example/tool', summary: 'Tool', integrationHint: 'Review docs', relevanceScore: 80,
+    discoveredAt: '2026-03-12T21:00:00Z', publishedAt: '2026-03-13T01:00:00Z', metadata: { fetchedAt: '2026-03-13T02:00:00Z', github: { pushedAt: '2026-03-13T01:00:00Z' } } };
+  const response = serializeNewsletterItem(item);
+  assert.equal(response.evidence.collected_at, '2026-03-13T02:00:00Z');
+  assert.equal(response.evidence.source_published_at, null);
+  assert.equal(response.evidence.source_activity_at, '2026-03-13T01:00:00.000Z');
+  assert.equal(serializeNewsletterItem({ ...item, metadata: {} }).evidence.collected_at, null);
+});

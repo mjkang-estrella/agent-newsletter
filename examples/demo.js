@@ -19,7 +19,7 @@ export async function buildDemo(directory) {
           return { items: [] };
         }
         const item = { ...fixture.project, summary: day.summary, integrationHint: day.integrationHint,
-          publishedAt: day.now, discoveredAt: day.now };
+          publishedAt: day.now, discoveredAt: day.now, metadata: { fetchedAt: day.now } };
         return { items: [item, { ...item, sourceUrl: item.sourceUrl + '?utm_source=fixture' }] };
       },
     })));

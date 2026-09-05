@@ -50,6 +50,7 @@ export function serializeNewsletterEdition(edition, options = {}) {
       serializeNewsletterItem(item, {
         ...options,
         storylineLookup,
+        collectedAt: normalizedEdition.publication?.collected_at ?? null,
       }),
     ),
     storyline_count: storylineContexts.length,
@@ -107,6 +108,7 @@ export function serializeNewsletterItem(
     scopeVersionFallback = CURRENT_NEWSLETTER_SCOPE_DEFINITION.currentVersion,
     storylineLookup = null,
     primaryStoryline = null,
+    collectedAt = null,
   } = {},
 ) {
   const normalizedItem = createNormalizedItem(item);
@@ -125,8 +127,9 @@ export function serializeNewsletterItem(
 
   return assertNewsletterItemApiResponse({
     evidence: {
-      source_published_at: normalizedItem.publishedAt ?? null,
-      collected_at: normalizedItem.discoveredAt ?? null,
+      source_published_at: normalizedItem.metadata?.github ? null : normalizedItem.publishedAt ?? null,
+      source_activity_at: normalizedItem.metadata?.github ? normalizedItem.publishedAt ?? null : null,
+      collected_at: normalizedItem.metadata?.fetchedAt ?? collectedAt,
       novelty_reason: normalizedItem.metadata?.storyline?.relationship?.explanation ?? "First observed in this publication history; upstream novelty is unverified.",
       uncertainty: "Source claims and integration instructions are unverified. Review linked sources before adopting.",
     },

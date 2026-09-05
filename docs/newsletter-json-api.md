@@ -1,6 +1,6 @@
 # Consumer metadata additions, schema 1.2.0
 
-The existing endpoints and stable IDs are unchanged. Every serialized item adds supplemental `evidence` with nullable `source_published_at` and `collected_at`, a `novelty_reason`, and an `uncertainty` string. Source dates are not edition publication dates. The explanation comes from the existing storyline classification when available.
+The existing endpoints and stable IDs are unchanged. Every serialized item adds supplemental `evidence` with nullable `source_published_at` and `collected_at`, nullable `source_activity_at` for GitHub push/update timestamps, a `novelty_reason`, and an `uncertainty` string. Source dates are not edition publication dates. The explanation comes from the existing storyline classification when available.
 
 Newly published editions include `publication` with `mode` (`live` or `sample`), `collected_at`, `coverage_status` (`complete`, `partial`, or `unknown`), `sources` (adapter ID, kind, status, fetched count), and `missing_sources`. Legacy records may omit it. Never infer complete coverage from absence.
 
