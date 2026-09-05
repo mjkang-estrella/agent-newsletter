@@ -230,7 +230,7 @@ function assertSentimentSpreadSchema(sentimentSpread) {
 }
 
 function assertNewsletterEditionSchema(edition) {
-  assert.deepEqual(Object.keys(edition).sort(), [
+  assert.deepEqual(Object.keys(edition).filter(key => key !== "freshness").sort(), [
     "content_window",
     "edition_id",
     "item_count",

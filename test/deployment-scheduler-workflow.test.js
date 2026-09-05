@@ -10,7 +10,8 @@ test("deployment workflow publishes once per day at 21:00 UTC", async () => {
 
   assert.match(workflow, /cron:\s*"0 21 \* \* \*"/);
   assert.match(workflow, /workflow_dispatch:/);
-  assert.match(workflow, /NEWSLETTER_BASE_TIMEZONE:\s*UTC/);
-  assert.match(workflow, /run:\s*npm run publish:newsletter/);
+  assert.match(workflow, /secrets.CRON_SECRET/);
+  assert.match(workflow, /run:\s*node examples\/trigger-publication.js/);
+  assert.doesNotMatch(workflow, /run:\s*npm run publish:newsletter/);
   assert.doesNotMatch(workflow, /publish:newsletter:scheduled/);
 });

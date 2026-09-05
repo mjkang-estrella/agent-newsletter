@@ -14,6 +14,9 @@
     "publish:newsletter": "node src/newsletter/publish-newsletter-edition.js",
     "publish:newsletter:scheduled": "node src/newsletter/run-scheduled-publication.js",
     "start:publication-scheduler": "node src/newsletter/start-publication-scheduler.js",
-    "test": "node --test"
+    "test": "node --test",
+    "demo": "node examples/demo.js",
+    "consume": "node examples/consumer.js",
+    "serve": "node examples/serve.js"
   }
 }

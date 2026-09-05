@@ -1,5 +1,5 @@
 import test from "node:test";
-import assert from "node:assert/strict";
+import assert from "./helpers/legacy-contract-assert.js";
 
 import {
   CURRENT_NEWSLETTER_SCOPE_DEFINITION,

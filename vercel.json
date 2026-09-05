@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "buildCommand": "",
-  "outputDirectory": ".",
+  "outputDirectory": "public",
   "functions": {
     "api/internal/publish.js": {
       "maxDuration": 60

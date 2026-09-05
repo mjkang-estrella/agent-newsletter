@@ -80,13 +80,14 @@ export function createFetchOrchestrationPlan({ registry, window } = {}) {
 }
 
 export class ContentFetcherCore {
-  constructor({ registry, requiredSourceKinds = null } = {}) {
+  constructor({ registry, requiredSourceKinds = null, adapterTimeoutMs = 30000 } = {}) {
     if (!registry) {
       throw new TypeError("registry is required");
     }
 
     this.registry = registry;
     this.requiredSourceKinds = requiredSourceKinds;
+    this.adapterTimeoutMs = adapterTimeoutMs;
   }
 
   async fetch(window) {
@@ -136,7 +137,14 @@ export class ContentFetcherCore {
     const startedMs = Date.now();
 
     try {
-      const result = await adapter.fetch(window);
+      let timer;
+      let result;
+      try {
+        result = await Promise.race([
+          Promise.resolve().then(() => adapter.fetch(window)),
+          new Promise((_, reject) => { timer = setTimeout(() => reject(new Error("Source collection timed out")), this.adapterTimeoutMs); }),
+        ]);
+      } finally { clearTimeout(timer); }
       const normalizedResult = createSourceFetchResult(result, {
         descriptor: adapter.descriptor,
         window,

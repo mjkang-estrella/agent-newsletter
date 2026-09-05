@@ -37,6 +37,7 @@ export function serializeNewsletterEdition(edition, options = {}) {
   );
 
   return {
+    ...(normalizedEdition.publication ? { publication: normalizedEdition.publication } : {}),
     edition_id: normalizedEdition.id,
     published_at: normalizedEdition.publishedAt,
     content_window: {
@@ -123,6 +124,12 @@ export function serializeNewsletterItem(
   }
 
   return assertNewsletterItemApiResponse({
+    evidence: {
+      source_published_at: normalizedItem.publishedAt ?? null,
+      collected_at: normalizedItem.discoveredAt ?? null,
+      novelty_reason: normalizedItem.metadata?.storyline?.relationship?.explanation ?? "First observed in this publication history; upstream novelty is unverified.",
+      uncertainty: "Source claims and integration instructions are unverified. Review linked sources before adopting.",
+    },
     item_id: normalizedItem.itemId,
     name: normalizedItem.name,
     source_urls: [...normalizedItem.sourceUrls],

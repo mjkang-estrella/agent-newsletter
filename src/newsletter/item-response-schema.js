@@ -7,7 +7,7 @@ import {
   SENTIMENT_SPREADS,
 } from "../core/contracts.js";
 
-export const NEWSLETTER_ITEM_RESPONSE_SCHEMA_VERSION = "1.1.0";
+export const NEWSLETTER_ITEM_RESPONSE_SCHEMA_VERSION = "1.2.0";
 
 export const REQUIRED_NEWSLETTER_ITEM_API_RESPONSE_FIELDS = Object.freeze([
   "item_id",
@@ -30,10 +30,12 @@ export const REQUIRED_NEWSLETTER_ITEM_API_RESPONSE_FIELDS = Object.freeze([
 
 export const SUPPLEMENTAL_NEWSLETTER_ITEM_API_RESPONSE_FIELDS = Object.freeze([
   "score_interpretation",
+  "evidence",
   "storyline",
 ]);
 
 export const NEWSLETTER_ITEM_API_RESPONSE_FIELDS = Object.freeze([
+  "evidence",
   "item_id",
   "name",
   "source_urls",
@@ -61,6 +63,7 @@ export const NEWSLETTER_ITEM_RESPONSE_SCHEMA = deepFreeze({
   requiredFields: REQUIRED_NEWSLETTER_ITEM_API_RESPONSE_FIELDS,
   supplementalFields: SUPPLEMENTAL_NEWSLETTER_ITEM_API_RESPONSE_FIELDS,
   fields: {
+    evidence: { type: "object", requiredFields: ["source_published_at", "collected_at", "novelty_reason", "uncertainty"] },
     item_id: {
       type: "string",
     },

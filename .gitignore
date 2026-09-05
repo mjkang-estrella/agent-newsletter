@@ -3,3 +3,10 @@
 .vercel/
 node_modules/
 
+.vercel
+.env*
+
+.consumer-state.json
+.live-consumer-state.json
+.local-live-state.json
+.data-live/

@@ -1,3 +1,4 @@
+import { publicationFreshness } from "./publication-status.js";
 import { createServer } from "node:http";
 
 import { normalizeTimestamp } from "../core/contracts.js";
@@ -422,9 +423,9 @@ async function buildApiResponse(request, config) {
 
       return createJsonResponse(
         200,
-        serializeNewsletterEdition(latestEdition, {
+        { ...serializeNewsletterEdition(latestEdition, {
           scopeVersionFallback: config.scopeDefinition.currentVersion,
-        }),
+        }), freshness: publicationFreshness(latestEdition, generatedAt) },
       );
     }
 

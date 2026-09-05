@@ -1,3 +1,4 @@
+import { createPublicationStatus } from "./publication-status.js";
 import { normalizeTimestamp } from "../core/contracts.js";
 import { mergeCanonicalIdentifiers } from "../core/item-identity.js";
 import { ItemResolutionService } from "../core/item-resolution.js";
@@ -103,6 +104,7 @@ export function createPublicationFlow({
   scopeDefinition = CURRENT_NEWSLETTER_SCOPE_DEFINITION,
   env = process.env,
   now = () => new Date().toISOString(),
+  mode = "live",
 } = {}) {
   if (!pipeline || typeof pipeline.aggregate !== "function") {
     throw new TypeError("pipeline must expose aggregate(window)");
@@ -228,6 +230,7 @@ export function createPublicationFlow({
         publishedAt: publicationPlan.publishedAt,
         window: publicationPlan.window,
         items: storylineSnapshot.items,
+        publication: createPublicationStatus(aggregated, resolveNow(now), mode),
         exclusionSummary,
         ...(exclusions.length > 0 ? { exclusions } : {}),
         ...(storylineSnapshot.storylines.length > 0

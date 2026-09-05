@@ -1,0 +1,8 @@
+{
+  "description": "Synthetic fixture using public project URLs. Text and dates demonstrate changes; these are not real release announcements.",
+  "days": [
+    {"now":"2026-03-11T21:00:00.000Z","summary":"MCP browser tools support autonomous browser research.","integrationHint":"Review the browser tool schema and permission boundary.","failArxiv":false},
+    {"now":"2026-03-12T21:00:00.000Z","summary":"MCP browser tools add isolated browser sessions and permission checks for autonomous research.","integrationHint":"Review isolated session configuration and permission checks before adoption.","failArxiv":true}
+  ],
+  "project": {"name":"Playwright MCP fixture","sourceUrl":"https://github.com/microsoft/playwright-mcp","category":"tool","sourceAuthorityScore":95}
+}

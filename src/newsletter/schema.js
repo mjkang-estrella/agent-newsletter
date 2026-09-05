@@ -48,6 +48,7 @@ export function createNewsletterEdition(input) {
   validateStorylineMembership(items, storylines);
 
   return {
+    ...(input.publication ? { publication: structuredClone(input.publication) } : {}),
     id: editionId,
     publishedAt,
     window,

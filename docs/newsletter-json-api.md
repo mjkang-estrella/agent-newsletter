@@ -1,3 +1,15 @@
+# Consumer metadata additions, schema 1.2.0
+
+The existing endpoints and stable IDs are unchanged. Every serialized item adds supplemental `evidence` with nullable `source_published_at` and `collected_at`, a `novelty_reason`, and an `uncertainty` string. Source dates are not edition publication dates. The explanation comes from the existing storyline classification when available.
+
+Newly published editions include `publication` with `mode` (`live` or `sample`), `collected_at`, `coverage_status` (`complete`, `partial`, or `unknown`), `sources` (adapter ID, kind, status, fetched count), and `missing_sources`. Legacy records may omit it. Never infer complete coverage from absence.
+
+`GET /api/newsletter/latest` adds `freshness`: `checked_at`, `age_seconds`, `stale`, `stale_after_hours` (26), and `coverage_status`. The rolling archive does not imply the latest edition is recent. Read the freshness flag explicitly.
+
+For a runnable, checkpointed consumer and its limits, see [the quick start](../README.md). Supplemental fields are additive; clients should tolerate future additional fields.
+
+---
+
 # Newsletter JSON API
 
 Machine-facing reference for the public newsletter API used by autonomous AI agents. This document reflects the current implementation in `src/newsletter/api.js`, the shared item contract in `src/newsletter/item-response-schema.js`, and the HTTP contract tests in `test/newsletter-api-contract.test.js`.

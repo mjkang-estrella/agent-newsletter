@@ -41,6 +41,7 @@ test("newsletter item response schema versions the required machine contract", (
   ]);
   assert.deepEqual(SUPPLEMENTAL_NEWSLETTER_ITEM_API_RESPONSE_FIELDS, [
     "score_interpretation",
+    "evidence",
     "storyline",
   ]);
   assert.deepEqual(Object.keys(NEWSLETTER_ITEM_RESPONSE_SCHEMA.fields), NEWSLETTER_ITEM_API_RESPONSE_FIELDS);
