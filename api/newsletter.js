@@ -1,4 +1,4 @@
-import { createSupabaseNewsletterApiHandler } from "../../src/supabase/runtime.js";
+import { createSupabaseNewsletterApiHandler } from "../src/supabase/runtime.js";
 
 let cachedHandler = null;
 

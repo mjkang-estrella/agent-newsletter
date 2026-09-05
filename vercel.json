@@ -7,8 +7,14 @@
     "api/internal/publish.js": {
       "maxDuration": 60
     },
-    "api/newsletter/[...path].js": {
+    "api/newsletter.js": {
       "maxDuration": 60
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/api/newsletter/:path*",
+      "destination": "/api/newsletter"
+    }
+  ]
 }
