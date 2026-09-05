@@ -79,6 +79,7 @@ Production uses the existing Vercel project and Supabase store. The GitHub workf
 npm test
 npm run build
 npm run lint
+npm run verify:deployment -- https://agent-news.mj-kang.com
 ```
 
 The regression suite covers duplicates, stable IDs, material change versus score drift, checkpoint replay, archive gaps, partial failure, stalled sources, total failure, legacy coverage and stale editions. See [verification notes](docs/verification.md) for this deployment's observed state and remaining limitations.

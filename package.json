@@ -17,6 +17,7 @@
     "test": "node --test",
     "demo": "node examples/demo.js",
     "consume": "node examples/consumer.js",
-    "serve": "node examples/serve.js"
+    "serve": "node examples/serve.js",
+    "verify:deployment": "node examples/verify-deployment.js"
   }
 }
